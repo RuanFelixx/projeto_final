@@ -1,12 +1,11 @@
-from gestao_pedidos import app
-from gestao_pedidos.database.config import db
-from gestao_pedidos.models.Cliente import Cliente
-from flask import request, render_template, redirect, url_for, flash
+from extensions import db
+from models.models import Cliente, Produto, Pedido, ProdutoPorPedido, Usuario
+from flask import request, render_template, redirect, url_for, flash, Blueprint
 from flask_login import login_required,current_user
 
+cliente_bp = Blueprint('clientes', __name__)
 
-
-@app.route('/cadastrar_cliente', methods=['GET', 'POST'])
+@cliente_bp.route('/cadastrar_cliente', methods=['GET', 'POST'])
 def cadastrar_cliente():
     if not current_user.is_authenticated:
         return redirect(url_for('register'))
@@ -17,14 +16,14 @@ def cadastrar_cliente():
         telefone = request.form['telefone']
         client = Cliente(nome, email, telefone, endereco)
         db.sesseion.add(client)
-        de.session.commit()
+        db.session.commit()
            
         return redirect(url_for('home'))
     return render_template('cadastrar_cliente.html')
 
 
 
-@app.route('/listar_clientes', methods=['GET'])
+@cliente_bp.route('/listar_clientes', methods=['GET'])
 def listar_clientes():
     # Redireciona para o registro caso o usuário não esteja autenticado
     if not current_user.is_authenticated:
@@ -40,7 +39,7 @@ def listar_clientes():
 
     return render_template('listar_clientes.html', dados=dados, ordem=ordem)
 
-@app.route('/editar_cliente/<int:cli_id>', methods=['GET', 'POST'])
+@cliente_bp.route('/editar_cliente/<int:cli_id>', methods=['GET', 'POST'])
 def editar_cliente(cli_id):
     if not current_user.is_authenticated:
         return redirect(url_for('register'))
@@ -66,7 +65,7 @@ def editar_cliente(cli_id):
     return render_template('editar_cliente.html', cliente=cliente)
 
 
-@app.route('/excluir_cliente/<int:cli_id>', methods=['GET', 'POST'])
+@cliente_bp.route('/excluir_cliente/<int:cli_id>', methods=['GET', 'POST'])
 def excluir_cliente(cli_id):
     if not current_user.is_authenticated:
         return redirect(url_for('register'))

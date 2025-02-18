@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, Column, Integer, String, Text, Numeric, Da
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.sql import func
-
+from app import db
 
 Base = declarative_base()
 
@@ -21,6 +21,15 @@ class Produto(Base):
     pro_desc = Column(Text, nullable=False)
     pro_quantidade = Column(Integer, nullable=False)
     pro_preco = Column(Numeric(10, 2), nullable=False)
+   
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+    
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
 
 class Pedido(Base):
     __tablename__ = 'tb_pedidos'
