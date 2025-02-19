@@ -1,9 +1,9 @@
 from flask import request, redirect, url_for, render_template, session, flash, Blueprint
 from flask_login import login_required, current_user
-from extensions import db
-from models.models import Produto
+from ..extensions import db
+from ..models.models import Produto
 
-produto_bp = Blueprint('produtos', __name__)
+produto_bp = Blueprint(name ='produtos',import_name = __name__)
 
 @produto_bp.route('/cadastrar_produto', methods=['GET', 'POST'])
 def cadastrar_produto():

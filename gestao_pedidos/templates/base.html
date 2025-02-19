@@ -89,7 +89,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url_for('home') }}">Gestão de Pedidos</a>
+            <a class="navbar-brand" href="{{ url_for('usuarios.home') }}">Gestão de Pedidos</a> 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -103,9 +103,9 @@
                             Cadastrar
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownCadastrar">
-                            <li><a class="dropdown-item" href="{{ url_for('cadastrar_cliente') }}">Cadastrar Cliente</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('cadastrar_produto') }}">Cadastrar Produto</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('cadastrar_pedido') }}">Cadastrar Pedido</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('clientes.cadastrar_cliente') }}">Cadastrar Cliente</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('produtos.cadastrar_produto') }}">Cadastrar Produto</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('pedidos.cadastrar_pedido') }}">Cadastrar Pedido</a></li>
                         </ul>
                     </li>
 
@@ -116,20 +116,20 @@
                             Listar
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownListar">
-                            <li><a class="dropdown-item" href="{{ url_for('listar_clientes') }}">Listar Clientes</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('listar_produtos') }}">Listar Produtos</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('listar_pedidos') }}">Listar Pedidos</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('clientes.listar_clientes') }}">Listar Clientes</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('produtos.listar_produtos') }}">Listar Produtos</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('pedidos.listar_pedidos') }}">Listar Pedidos</a></li>
                         </ul>
                     </li>
 
                     <!-- Link normal de Relatórios -->
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('relatorios') }}">Relatórios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('relatorios.relatorios') }}">Relatórios</a></li>
                 </ul>
 
                 <!-- Lado direito -->
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('logout') }}">Sair</a>
+                        <a class="nav-link" href="{{ url_for('usuarios.logout') }}">Sair</a>
                     </li>
                 </ul>
             </div>

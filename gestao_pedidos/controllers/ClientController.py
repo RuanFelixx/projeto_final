@@ -1,9 +1,9 @@
-from extensions import db
-from models.models import Cliente, Produto, Pedido, ProdutoPorPedido, Usuario
+from ..extensions import db
+from ..models.models import Cliente, Produto, Pedido, ProdutoPorPedido, Usuario
 from flask import request, render_template, redirect, url_for, flash, Blueprint
 from flask_login import login_required,current_user
 
-cliente_bp = Blueprint('clientes', __name__)
+cliente_bp = Blueprint(name ='clientes',import_name = __name__)
 
 @cliente_bp.route('/cadastrar_cliente', methods=['GET', 'POST'])
 def cadastrar_cliente():

@@ -1,10 +1,10 @@
-from extensions import db
-from models.models import Cliente, Produto, Pedido, ProdutoPorPedido, Usuario
+from ..extensions import db
+from ..models.models import Cliente, Produto, Pedido, ProdutoPorPedido, Usuario
 from flask import render_template, request, flash, redirect, url_for, Blueprint
 from flask_login import login_required, current_user
 from sqlalchemy import func
 
-relatorios_bp = Blueprint('relatorios', __name__)
+relatorios_bp = Blueprint(name ='relatorios',import_name = __name__)
 
 @relatorios_bp.route('/relatorios', methods=['GET', 'POST'])
 @login_required

@@ -1,5 +1,4 @@
-from gestao_pedidos import app
-from gestao_pedidos.database.config import mysql
+from ..extensions import db
 from flask_login import LoginManager, login_user, login_required, logout_user, UserMixin, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -45,9 +44,3 @@ class User(UserMixin):
             return user
         return None
     
-login_manager = LoginManager()
-login_manager.init_app(app)
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.get(user_id)

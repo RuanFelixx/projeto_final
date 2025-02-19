@@ -1,10 +1,10 @@
-from extensions import db
-from models.models import Cliente, Produto, Pedido, ProdutoPorPedido, Usuario
+from ..extensions import db
+from ..models.models import Cliente, Produto, Pedido, ProdutoPorPedido, Usuario
 from flask import render_template, redirect, url_for, request, flash, Blueprint
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 
-usuarios_bp = Blueprint('usuarios', __name__)
+usuarios_bp = Blueprint(name = 'usuarios', import_name = __name__)
 
 @usuarios_bp.route('/home')
 @login_required
